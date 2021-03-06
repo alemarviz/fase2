@@ -1,0 +1,25 @@
+    <table>
+        <thead>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Tipo</th>
+        </thead>
+        <?php
+            $cons = "SELECT * FROM usuarios ORDER BY correo";
+            $cn = new Conexion();
+            $datos = $cn->ejecutar($cons);
+            for($i=0; $i < count($datos); $i++) {
+                echo "<tr>";
+                echo "<td>$datos->correo</td>";
+                echo "<td>$datos->nombre</td>";
+                echo "<td>$datos->apellidos</td>";
+                if ($datos->tipo == 1)
+                    echo "<td>Administrador</td>";
+                else
+                    echo "<td>Usuario</td>";
+                echo "</tr>";
+            }
+        ?>
+    </table>
+    
